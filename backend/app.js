@@ -8,9 +8,14 @@ import { dbConnection } from "./database/dbConnection.js";
 const app = express();
 
 dotenv.config({ path: "./config/config.env" });
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  "https://mern-stack-restaurant-reservation-s-mu.vercel.app",
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL],
+    origin: allowedOrigins,
     methods: ["POST"],
     credentials: true,
   }),
