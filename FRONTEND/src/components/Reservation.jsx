@@ -15,7 +15,11 @@ const Reservation = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
   const today = new Date().toISOString().split("T")[0];
-  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:4000";
+  const apiUrl =
+    import.meta.env.VITE_API_URL ||
+    (import.meta.env.DEV
+      ? "http://localhost:4000"
+      : "https://mern-stack-restaurant-reservation-system-aw1t.onrender.com");
 
   const handleReservation = async (e) => {
     e.preventDefault();
